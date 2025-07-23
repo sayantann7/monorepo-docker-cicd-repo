@@ -1,0 +1,18 @@
+FROM oven/bun:1
+
+WORKDIR /usr/src/app
+
+COPY ../apps/websocket/package.json ./apps/websocket/package.json
+COPY ../bun.lockb ../bun.lockb
+COPY ../package.json ../package.json
+COPY ../package-lock.json ../package-lock.json
+
+RUN bun install
+
+COPY . .
+
+RUN bun run generate:db
+
+EXPOSE 8081
+
+CMD ["bun", "start:ws"]

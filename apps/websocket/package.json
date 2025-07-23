@@ -1,0 +1,22 @@
+{
+  "name": "websocket",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "bun run index.ts",
+    "start": "bun run dist/index.js",
+    "lint": "bunx eslint . --max-warnings 0",
+    "check-types": "bunx tsc --noEmit"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@repo/ui": "*",
+    "db": "*"
+  }
+}
