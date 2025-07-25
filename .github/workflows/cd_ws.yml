@@ -21,9 +21,9 @@ jobs:
           context: .
           file: ./docker/Dockerfile.websocket
           push: true
-          tags: sayantannandi/cicd-tut-app-websocket:${{ github.sha }}
+          tags: 100xdevs/todo-app-websocket:${{ github.sha }}
       - name: Deploy to the VM
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
           chmod 700 /home/runner/ssh_key
-          ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@64.227.163.42 -t "docker stop user_websocket && docker run --name user_websocket -d -p 8081:8081 sayantannandi/cicd-tut-app-websocket:${{ github.sha }}"
+          ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@64.227.163.42 -t "docker stop user_backend && docker run --name user_backend -d -p 8080:8080 100xdevs/tut-app-ws:${{ github.sha }}"
